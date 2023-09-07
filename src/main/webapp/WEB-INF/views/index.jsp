@@ -25,7 +25,8 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>	
 		
-	<!-- content -->	
+	<!-- content -->
+	<h1>test</h1>
 	<div class="content">
 		<section class="section1">	
 			<div class="section1_d1">	
