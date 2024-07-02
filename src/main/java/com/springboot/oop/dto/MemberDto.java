@@ -1,9 +1,10 @@
 package com.springboot.oop.dto;
 
-import com.springboot.oop.entity.Member;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class MemberDto {
 
     private String id;
@@ -11,6 +12,10 @@ public class MemberDto {
     private String gender;
     private String addr1;
     private String addr2;
+
+    public String getAddress() {
+        return getAddr1() + getAddr2();
+    }
 
 
 }

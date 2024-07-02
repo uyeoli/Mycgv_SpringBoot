@@ -16,9 +16,9 @@ public class MemberController {
     private final MemberService memberService;
 
 
-    @GetMapping("/{id}/{pass}")
-    public ResponseEntity<?> login(@PathVariable String id, @PathVariable String pass) {
-        if(memberService.login(id, pass)) {
+    @GetMapping()
+    public ResponseEntity<?> login(MemberDto memberDto) {
+        if(memberService.login(memberDto)) {
             return ResponseEntity.status(HttpStatus.OK).body("Success Login");
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Forbidden");
@@ -36,9 +36,9 @@ public class MemberController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        memberService.delete(id);
+    @DeleteMapping()
+    public ResponseEntity<?> delete(MemberDto memberDto) {
+        memberService.delete(memberDto);
         return ResponseEntity.ok().build();
     }
 

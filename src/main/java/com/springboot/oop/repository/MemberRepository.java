@@ -8,13 +8,10 @@ public interface MemberRepository {
 
     void join(Member member);
 
-    void delete(String id);
+    void delete(Member member);
 
     void modify(Member member);
 
     Member findById(String id);
-
-
-
 
 }

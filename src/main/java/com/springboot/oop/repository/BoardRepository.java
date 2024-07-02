@@ -11,7 +11,7 @@ public interface BoardRepository {
 
     void modify(Board board);
 
-    void delete(String id);
+    void delete(Board board);
 
     void save(Board board);
 

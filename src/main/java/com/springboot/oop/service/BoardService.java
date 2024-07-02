@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface BoardService {
 
-    List<Board> findAll();
+    List<BoardDto> findAll();
 
     void modify(BoardDto boardDto);
 
-    void delete(String id);
+    void delete(BoardDto boardDto);
 
     void save(BoardDto boardDto);
 

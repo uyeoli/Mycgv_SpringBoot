@@ -14,34 +14,27 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public boolean login(String id, String pass) {
-        Member member = memberRepository.findById(id);
-        return pass.equals(member.getPass());
+    public boolean login(MemberDto memberDto) {
+        Member member = memberRepository.findById(memberDto.getId());
+        return memberDto.getPass().equals(member.getPass());
     }
 
     @Override
     public void join(MemberDto memberDto) {
-        Member member = new Member();
-        member.setId(memberDto.getId());
-        member.setPass(memberDto.getPass());
-        member.setGender(memberDto.getGender());
-        member.setAddress(member.combineAddress(memberDto.getAddr1(), memberDto.getAddr2()));
+        Member member = Member.of(memberDto);
         memberRepository.join(member);
     }
 
     @Override
     public void modify(MemberDto memberDto) {
-        Member member = memberRepository.findById(memberDto.getId());
-        member.setId(memberDto.getId());
-        member.setPass(memberDto.getPass());
-        member.setGender(memberDto.getGender());
-        member.setAddress(member.combineAddress(memberDto.getAddr1(), memberDto.getAddr2()));
+        Member member = Member.of(memberDto);
         memberRepository.modify(member);
     }
 
     @Override
-    public void delete(String id) {
-        memberRepository.delete(id);
+    public void delete(MemberDto memberDto) {
+        Member member = Member.of(memberDto);
+        memberRepository.delete(member);
     }
 
 }

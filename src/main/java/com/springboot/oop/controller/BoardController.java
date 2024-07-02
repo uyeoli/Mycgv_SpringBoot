@@ -18,25 +18,25 @@ public class BoardController {
 
     @GetMapping
     public ResponseEntity<?> findAll() {
-        List<Board> list = boardService.findAll();
+        List<BoardDto> list = boardService.findAll();
         return ResponseEntity.ok(list);
     }
 
     @PostMapping
-    public ResponseEntity<?> save(BoardDto boardDto) {
+    public ResponseEntity<?> save(@RequestBody BoardDto boardDto) {
         boardService.save(boardDto);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
-    public ResponseEntity<?> modify(BoardDto boardDto) {
+    public ResponseEntity<?> modify(@RequestBody BoardDto boardDto) {
         boardService.modify(boardDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        boardService.delete(id);
+    @DeleteMapping()
+    public ResponseEntity<?> delete(@RequestBody BoardDto boardDto) {
+        boardService.delete(boardDto);
         return ResponseEntity.ok().build();
     }
 

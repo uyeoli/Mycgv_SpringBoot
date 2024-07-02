@@ -1,18 +1,26 @@
 package com.springboot.oop.entity;
 
+import com.springboot.oop.dto.MemberDto;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@Builder
 public class Member {
     private String id;
     private String pass;
     private String gender;
     private String address;
 
-    public String combineAddress(String addr1, String addr2) {
-        return addr1 + addr2;
+
+    public static Member of(MemberDto memberDto) {
+        return Member.builder()
+                .id(memberDto.getId())
+                .pass(memberDto.getPass())
+                .gender(memberDto.getGender())
+                .address(memberDto.getAddress())
+                .build();
+
     }
 
 
