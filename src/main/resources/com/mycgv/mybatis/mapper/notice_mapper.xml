@@ -3,16 +3,16 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace = "com.springboot.mycgv.repository.NoticeMapper">
+<mapper namespace = "com.springboot.old.repository.NoticeMapper">
 
-	<select id = "list" parameterType = "com.springboot.mycgv.dto.PageDto" resultType = "com.springboot.mycgv.dto.NoticeDto">
+	<select id = "list" parameterType = "com.springboot.old.dto.PageDto" resultType = "com.springboot.old.dto.NoticeDto">
 		select rno, nid, ntitle, ncontent, nhits, ndate
 				from (select rownum rno, nid, ntitle, ncontent, nhits, to_char(ndate, 'yyyy-mm-dd') ndate
          				 from (select nid, ntitle, ncontent, nhits, ndate from mycgv_notice order by ndate desc))
               				 where rno between #{startCount} and #{endCount}
 	</select>
 <!--	-->
-	<select id = "content" parameterType = "String" resultType = "com.springboot.mycgv.dto.NoticeDto">
+	<select id = "content" parameterType = "String" resultType = "com.springboot.old.dto.NoticeDto">
 		SELECT NID, NTITLE, NCONTENT, NHITS, TO_CHAR(NDATE,'YYYY-MM-DD') NDATE, NFILE1, NSFILE1, NFILE2, NSFILE2 FROM MYCGV_NOTICE WHERE NID = #{nid}
 	</select>
 <!--	-->

@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace = "com.springboot.mycgv.repository.PageMapper">
+<mapper namespace = "com.springboot.old.repository.PageMapper">
 	
-	<select id = "totalRowCount" parameterType = "com.springboot.mycgv.dto.PageDto" resultType = "int">
+	<select id = "totalRowCount" parameterType = "com.springboot.old.dto.PageDto" resultType = "int">
 		select count(*) from 
 		<if test='serviceName == "notice"'>
 			mycgv_notice
